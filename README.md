@@ -1,2 +1,2 @@
-# Ch2. JS 시작하기.
+# Part4. JavaScript Level Up!
 
