@@ -1,38 +1,29 @@
-//ES6 Classes
-
-const heropy = {
-  name: 'Heropy',
-  normal(){//normal:function()을 축약시킨 패턴이다.
-    console.log(this.name)
-  },
-  arrow: () => {
-    console.log(this.name)
+class Vehicle{
+  constructor(name, wheel){
+    this.name = name
+    this.wheel = wheel
   }
 }
+const myVehicle = new Vehicle('운송수단', 2)
+console.log(myVehicle)
 
-heropy.normal()
-heropy.arrow()
-
-// function User(first, last){
-//   this.firstName = first
-//   this.lastName = last
-// }
-// User.prototype.getFullName = function(){
-//   return `${this.firstName} ${this.lastName}`
-// }
-
-class User{
-  constructor(first, last){
-        this.firstName = first
-        this.lastName = last
-  }
-  getFullName(){
-    return `${this.firstName} ${this.lastName}`
+class Bicycle extends Vehicle{
+  constructor(name, wheel){
+    super(name,wheel)
   }
 }
+const myBicycle = new Bicycle('삼천리', 2)
+const daughtersBicycle = new Bicycle('세발',3)
+console.log(myBicycle)
+console.log(daughtersBicycle)
+class Car extends Vehicle{
+  constructor(name, wheel, license){
+    super(name, wheel)
+    this.license = license
+  }
+}
+const myCar = new Car('벤츠',4,true)
+const daughtersCar = new Car('포르쉐',4,false)
 
-const heroppy = new User('Heropy', 'Park')
-const amy = new User('Amy', 'Clarke')
-
-console.log(heroppy)
-console.log(amy.getFullName())
+console.log(myCar)
+console.log(daughtersCar)
