@@ -1,42 +1,48 @@
-// const heropy ={
-//   firstName: 'Heropy',
-//   lastName: 'Park',
-//   getFullName: function(){
-//     return `${this.firstName} ${this.lastName}`
-//   }
-// }
-// console.log(heropy.getFullName())
+//this
+//일반(Normal) 함수는 호출 위치에서 따라 this 정의
+//화살표(Arrow) 함수는 자신이 선언된 함수 범위에서 this 정의
 
-// const amy ={
-//   firstName: 'Amy',
-//   lastName: 'Clarke',
-//   getFullName: function(){
-//     return `${this.firstName} ${this.lastName}`
-//   }
-// }
-// console.log(amy.getFullName())
-
-// const neo ={
-//   firstName: 'Neo',
-//   lastName: 'Smith',
-//   getFullName: function(){
-//     return `${this.firstName} ${this.lastName}`
-//   }
-// }
-// console.log(neo.getFullName())
-
-function user(first, last){
-  this.firstName = first
-  this.lastName = last
+const heropy = {
+  name: 'Heropy',
+  normal: function(){
+    console.log(this.name)
+  },
+  arrow: ()=>{
+    console.log(this.name)
   }
-user.prototype.getFullName = function (){
-  return `${this.firstName} ${this.lastName}`
+}
+heropy.normal()
+heropy.arrow()
+
+const amy ={
+  name: 'Amy',
+  normal: heropy.normal,
+  arrow: heropy.arrow
+}
+amy.normal()
+amy.arrow()
+
+function User(name){
+  this.name = name
+}
+User.prototype.normal = function(){
+  console.log(this.name)
+}
+User.prototype.arrow = () =>{
+  console.log(this.name)
 }
 
-  
-const heropy = new user('Heropy', 'Park')
-const amy = new user('Amy', 'Clarke')
-//new키워드를 통해 생성자 함수로 실행한 결과를 반환해서 할당된 변수인 heropy와 amy는 인스턴스이다.
+const hheropy = new User('Heropy')
 
-console.log(heropy.getFullName())
-console.log(amy)
+hheropy.normal()
+hheropy.arrow()
+
+const timer = {
+  name: 'Heropy!!',
+  timeout:function(){
+    setTimeout(()=>{
+      console.log(this.name)
+    }, 2000)
+  }
+}
+timer.timeout()
