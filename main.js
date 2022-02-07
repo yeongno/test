@@ -1,11 +1,13 @@
-//삼항 연산자(ternary operator)
+import random from './getRandom'
 
-const a = 1<2
+//조건문 (If statement)
 
-if(a){
-  console.log('참')
-}else {
-  console.log('거짓')
+const a = random()
+
+if (a === 0) {
+  console.log('a is 0')
+} else if (a ===2){
+  console.log('a is 2')
+} else {
+  console.log('rest...')
 }
-
-console.log(a?'참':'거짓')
