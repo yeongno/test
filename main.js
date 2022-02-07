@@ -1,48 +1,38 @@
-//this
-//일반(Normal) 함수는 호출 위치에서 따라 this 정의
-//화살표(Arrow) 함수는 자신이 선언된 함수 범위에서 this 정의
+//ES6 Classes
 
 const heropy = {
   name: 'Heropy',
-  normal: function(){
+  normal(){//normal:function()을 축약시킨 패턴이다.
     console.log(this.name)
   },
-  arrow: ()=>{
+  arrow: () => {
     console.log(this.name)
   }
 }
+
 heropy.normal()
 heropy.arrow()
 
-const amy ={
-  name: 'Amy',
-  normal: heropy.normal,
-  arrow: heropy.arrow
-}
-amy.normal()
-amy.arrow()
+// function User(first, last){
+//   this.firstName = first
+//   this.lastName = last
+// }
+// User.prototype.getFullName = function(){
+//   return `${this.firstName} ${this.lastName}`
+// }
 
-function User(name){
-  this.name = name
-}
-User.prototype.normal = function(){
-  console.log(this.name)
-}
-User.prototype.arrow = () =>{
-  console.log(this.name)
-}
-
-const hheropy = new User('Heropy')
-
-hheropy.normal()
-hheropy.arrow()
-
-const timer = {
-  name: 'Heropy!!',
-  timeout:function(){
-    setTimeout(()=>{
-      console.log(this.name)
-    }, 2000)
+class User{
+  constructor(first, last){
+        this.firstName = first
+        this.lastName = last
+  }
+  getFullName(){
+    return `${this.firstName} ${this.lastName}`
   }
 }
-timer.timeout()
+
+const heroppy = new User('Heropy', 'Park')
+const amy = new User('Amy', 'Clarke')
+
+console.log(heroppy)
+console.log(amy.getFullName())
