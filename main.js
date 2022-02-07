@@ -1,17 +1,18 @@
-//즉시실행함수
-//IIFE, Immediately-Invoked Function Expression
+//호이스팅(Hoisting)
+//함수 선언부가 유효범위 최상단으로 끌어올려지는 현상
 
 const a = 7
-function double(){
+
+// double()//위에서 아래로 읽혀지기 때문에 함수가 만들어기 전에 선언하면 에러
+
+const double = function (){
   console.log(a*2)
 }
-double(); 
-//아래의 즉시실행함수를 실행 시키려면 세미콜론으로 해당 함수가 끝났다는 표시로 구분지어 줘야함.
 
-(function (){
-  console.log(a*2)
-})();
+double()
 
-(function (){
-  console.log(a*2)
-}())
+sum()
+
+function sum(){
+  console.log(a+1)
+}
