@@ -1,18 +1,31 @@
-// 형 변환(Type conversion)
+//함수 복습
 
-//Truthy(참 같은 값)
-//true, {}, [],1,2,'false', -12, '3.14' ...
-
-//Flasy(거짓 같은 값)
-//false, '', null, undefined, 0, -0, Nan(Not a number)
-
-const a =1
-const b ='1'
-
-console.log(a===b)//일치 연산자로 형변환이 일어나지 않아 정확하게 false값이 나옴
-console.log(a==b)
-//동등 연산자로 형 변환이 일어나며 true로 출력이 된다.그렇기에 되도록이면 잘 안씀
-
-if(1+ad){
-  console.log(123)
+function sum(x, y) {
+  // console.log(x+y)
+  return x + y
 }
+const a = sum(1, 3)
+const b = sum(4, 12)
+
+console.log(a)
+console.log(b)
+console.log(a + b)
+console.log(sum(1, 3))
+console.log(sum(1, 3) + sum(4, 5))//효율적이지 않음
+
+sum(1, 3)//함수의 인수로 1,3을 넣으면 함수의 매개변수로 받아 처리
+
+const ssum = function (x,y){
+  console.log(x)
+  return x+y
+  console.log(x)// return에서 종료되기에 아래 값들은 실행되지 않음
+}
+
+console.log(ssum(1,3))
+
+function sssum(){
+  console.log(arguments)
+  return arguments[0] + arguments[1]
+}
+
+console.log(sssum(7,3))
