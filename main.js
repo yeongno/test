@@ -40,3 +40,61 @@ const c = fruits.map(function(fruit, index){
   }
 })
 console.log(c)
+// (3) [{…}, {…}, {…}]
+// 0: {id: 0, namd: 'Apple'}
+// 1: {id: 1, namd: 'Banana'}
+// 2: {id: 2, namd: 'Cherry'}
+// length: 3
+// [[Prototype]]: Array(0)
+
+//.filter()
+const d = numbers.map(number =>number <3)
+console.log(d)
+//(4) [true, true, false, false]
+const e = numbers.filter(number =>number <3)
+console.log(e)
+//(2) [1, 2]
+//*true면 값 반환하며 false이면 반환 안함.
+console.log(numbers)//(4) [1, 2, 3, 4]_원본에 map, filter 손상없음
+
+//.finde() .findeIndex()
+
+const f = fruits.find(fruit=>/^B/.test(fruit))
+console.log(f)//Banana
+//대문자 B로 시작하는 아이템 반환
+
+const g = fruits.findIndex(fruit=>/^B/.test(fruit))
+console.log(g)//1 _찾은 아이템 번호
+
+// .includes()
+const h = numbers.includes(3)
+console.log(h)//true
+const i = fruits.includes('HEROPY')
+console.log(i)//false
+
+// .push() .unshift()
+// 원본 수정됨 주의!
+const numbers1= [1,2,3,4]
+numbers1.push(5)
+console.log(numbers1)//(5) [1, 2, 3, 4, 5]
+numbers1.unshift(0)
+console.log(numbers1)//(6) [0, 1, 2, 3, 4, 5]
+// .reverse()
+// 원본 수정됨 주의!
+const numbers2= [1,2,3,4]
+const fruits2 = ['Apple', 'Banana', 'Cherry']
+numbers2.reverse()
+fruits2.reverse()
+console.log(numbers2)//(4) [4, 3, 2, 1]
+console.log(fruits2)//['Cherry', 'Banana', 'Apple']
+
+// .splice()
+// 원본 수정됨 주의!
+const numbers3= [1,2,3,4]
+const fruits3 = ['Apple', 'Banana', 'Cherry']
+numbers3.splice(2,1)
+console.log(numbers3)//(3) [1, 2, 4]
+numbers3.splice(2,0,999)
+console.log(numbers3)//(4) [1, 2, 999, 3, 4]
+fruits3.splice(2, 0, 'Orange')
+console.log(fruits3)//(4) ['Apple', 'Banana', 'Orange', 'Cherry']
