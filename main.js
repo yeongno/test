@@ -1,38 +1,20 @@
-const userAge ={
-  //Key: value
-  name: 'Heropy',
-  age: 85
-}
-const userEmail ={
-  name: 'Heropy',
-  email: 'dldudsh123@gmail.com'
-}
-
-// const target = Object.assign(userAge, userEmail)
-// console.log(target)//{name: 'Heropy', age: 85, email: 'dldudsh123@gmail.com'}
-// console.log(userAge)//{name: 'Heropy', age: 85, email: 'dldudsh123@gmail.com'}
-// console.log(target === userAge)//true 메모리의 같은 곳을 참조 하고 있음
-
-const a = { k: 123}
-const b = { k: 123}
-console.log(a === b )//false_생긴건 같지만 메모리 참조가 다르다.
-
-const target1 = Object.assign({}, userAge, userEmail)
-console.log(target1)//{name: 'Heropy', age: 85, email: 'dldudsh123@gmail.com'}
-console.log(userAge)//{name: 'Heropy', age: 85}
-console.log(target1 === userAge)//false _ 새로운 객체를 만들어 원본 손상 없이 사용 가능
-const target2 = Object.assign({}, userAge)//새로운 객체로 복사 가능
+//구조 분해 할당 (Destructuring assignment)
+//비구조화 할당
 
 const user ={
   name: 'Heropy',
   age: 85,
-  email: 'dldudsh123@gmail.com'
+  email: 'dldudsh123@gmail.com',
+  address: 'USA'
 }
+const{name: heropy, age, email, address ='Korea'} = user
+//E.g, user.address
 
-const keys = Object.keys(user)
-console.log(keys)
+console.log(`사용자의 이름은 ${heropy}입니다.`)//사용자의 이름은 Heropy입니다. 다른 이름으로 지정 사용 가능
+console.log(`${name}의 나이는 ${age}세 입니다.`)//의 나이는 85세 입니다.*heropy로 변수 이름을 지정 하였기에 name 사용 불가
+console.log(`${name}의 이메일은 ${user.email}입니다.`)//Heropy의 이메일은 dldudsh123@gmail.com입니다.
+console.log(address)//USA _address의 값이 비어 있으면 Korea를 반환
 
-console.log(user['email'])
-
-const values = keys.map(key => user[key])
-console.log(values)
+const fruits = ['Apple', 'Banana', 'Cherry']
+const [a,b,c,d] = fruits//배열의 구조분해 또한 가능
+console.log(a,b,c,d)//Apple Banana Cherry undefined
