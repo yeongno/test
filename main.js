@@ -1,22 +1,42 @@
-const pi = 3.141592
-console.log(pi)
+const numbers= [1,2,3,4]
+const fruits = ['Apple', 'Banana', 'Cherry']
 
-const str = pi.toFixed(2)
-console.log(str)
-console.log(typeof str)
+console.log(numbers[1])//2
+console.log(fruits)//배열 출력
+console.log(fruits[2])//Cherry
+// .length 아이템의 갯수 확인
+console.log(numbers.length)//4
+console.log(fruits.length)//3
+console.log([1,2].length)//2
+console.log([].length)//0
+// .concat()
+console.log(numbers.concat(fruits))//[1,2,3,4,'Apple', 'Banana', 'Cherry']
+console.log(numbers)//[1,2,3,4]
+console.log(fruits)//['Apple', 'Banana', 'Cherry']
+// .forEach() 배열데이터의 아이템 갯수 만큼 콜백함수의 인수로 사용됨
+fruits.forEach(function(element, index, array){
+  console.log(element, index, array)
+})
+// Apple 0 (3) ['Apple', 'Banana', 'Cherry']
+// main.js:18 Banana 1 (3) ['Apple', 'Banana', 'Cherry']
+// main.js:18 Cherry 2 (3) ['Apple', 'Banana', 'Cherry']
 
-//전역 함수를 사용하여 위의 문자 데이터를 숫자 데이터로 바꾸기
-const integer = parseInt(str)
-const float = parseFloat(str)
-console.log(integer)//3 반환
-console.log(float)//3.14 반환
-console.log(typeof integer, typeof float)
 
-console.log('abs: ', Math.abs(-12))//12
-console.log('min: ', Math.min(2,8))//2
-console.log('max: ', Math.max(2,8))//8
-console.log('ceil: ', Math.ceil(3.14))//4 *올림 처리
-console.log('floor: ', Math.floor(3.14))//3 *내림 처리
-console.log('round: ', Math.round(3.14))//3 *반 올림
-console.log('random: ', Math.random())//0.1383785~
+// .map()
+const a = fruits.forEach(function (fruit, index){
+  console.log(`${fruit}-${index}`)
+})
+console.log(a)//undefined
 
+const b = fruits.map(function(fruit, index){
+  return `${fruit}-${index}`
+})
+console.log(b)
+//['Apple-0', 'Banana-1', 'Cherry-2']
+const c = fruits.map(function(fruit, index){
+  return {
+    id: index,
+    namd: fruit
+  }
+})
+console.log(c)
