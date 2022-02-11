@@ -1,33 +1,34 @@
-//데이터 불변성(Immutability)
-//원시 데이터: String, Number, Boolean, undefined, null
-//참조형 데이터: Object, Array, Function
-//------------------------------------------------------------
+import _ from 'lodash'
+
 //|1:         |2:         |3:         |4:
-//------------------------------------------------------------
-
-let a1 = 1
-let b1 = 4
-console.log(a1, b1, a1 === b1) //1 4 false_메모리 주소 다름
-b1 = a1
-console.log(a1, b1, a1 === b1) //1 1 true_메모리 주소 같음
-a1 = 7
-console.log(a1, b1, a1 === b1) //7 1 false_a는 다른 메모리 주소를 가리켜 주소 다름.
-let c1 = 1
-console.log(b1, c1, b1 === c1) //1 1 true_c는 새로운 메모리가 아닌 현재 1값이 있는 b와 같은 주소를 가르킴
-//새로운 원시 데이터를 사용 했을 때 해당 데이터가 기존 메모리에 들어 있다면 그 주소를 가르킴 이것을 데이터의 불변성이라 한다.
-//그렇기에 원시 데이터의 값이 다를 경우 다른 데이터라는 것이다.
-
-let a = {
-  k: 1
+//얕은 복사(Shallow copy), 깊은 복사(Deep copy)
+const user ={
+  name: 'Heropy',
+  age:85,
+  emails:['dldudsh123@gmail.com']
 }
-let b = {
-  k: 1
+const copyUser = user
+//const copyUser = Object.assign({}, user) //다른 메모리로 해당 객체 복사(얕은 복사)
+//const copyUser ={...user}//전개 연산자로 복사가능 이 또한 다른 새로운 메모리로 복사(얕은 복사)
+console.log(copyUser===user)//true_같은 메모리 주소
+
+user.age =22
+console.log('user',user)//user {name: 'Heropy', age: 22, emails: Array(1)}
+console.log('copyUser',copyUser)//copyUser {name: 'Heropy', age: 22, emails: Array(1)}
+
+console.log('-------')
+console.log('-------')
+
+const user1 ={
+  name: 'Heropy',
+  age:85,
+  emails:['dldudsh123@gmail.com']
 }
-console.log(a, b, a === b)
-a.k = 7
-b = a
-console.log(a, b, a === b)
-a.k = 2
-console.log(a, b, a === b)
-let c = b
-console.log(a, b, c, a === c)
+// const copyUser1 = {...user1}
+const copyUser1 = _.cloneDee[(user)]
+console.log(copyUser1===user1)//false
+user1.age =22
+user1.emails.push('neo@zillinks.com')
+console.log(user1.emails===copyUser1.emails)//true
+console.log('user1', user1)
+console.log('copyUser1',copyUser1)
